@@ -144,7 +144,7 @@ Feature importance is assessed using SHAP (SHapley Additive exPlanations) values
 
 XGBoost's top features by mean |SHAP value|:
 
-| Rank | Feature | Mean |SHAP| |
+| Rank | Feature | Mean \|SHAP\| |
 |---|---|---|
 | 1 | `age` | 1.818 |
 | 2 | `weeks worked in year` | 1.013 |
