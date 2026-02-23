@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Virtual environment
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Data files (large; not for version control)
+data/*.csv
+data/*.data
+
+# Generated outputs (models, plots, numpy arrays)
+outputs/
+data/
+notebooks/
