@@ -12,7 +12,7 @@ cd jpmc-census_income_classification_segmentation
 
 **2. Create and activate a virtual environment:**
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 ```
 - macOS / Linux:
   ```bash
@@ -36,17 +36,17 @@ All commands must be run from the project root (`takehomeproject_jpmc/`).
 
 **1. Train classification models:**
 ```bash
-python src/classification/train.py
+python3 src/classification/train.py
 ```
 
 **2. Evaluate classification models** (requires step 1):
 ```bash
-python src/classification/evaluate.py
+python3 src/classification/evaluate.py
 ```
 
 **3. Run segmentation:**
 ```bash
-python src/segmentation/segmentation.py
+python3 src/segmentation/segmentation.py
 ```
 
 All outputs (models, plots) are saved to `outputs/`.
