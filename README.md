@@ -32,7 +32,7 @@ Place `census-bureau-raw.csv` and `census-bureau.columns` in the `data/` directo
 
 ## Running
 
-All commands must be run from the project root (`takehomeproject_jpmc/`).
+All commands must be run from the project root (`jpmc-census_income_classification_segmentation`).
 
 **1. Train classification models:**
 ```bash
