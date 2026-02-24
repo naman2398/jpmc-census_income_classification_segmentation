@@ -2,13 +2,33 @@
 
 ## Setup
 
-Requires Python 3.9+. Install dependencies:
+Requires Python 3.9+.
 
+**1. Clone the repository:**
+```bash
+git clone https://github.com/naman2398/jpmc-census_income_classification_segmentation.git
+cd jpmc-census_income_classification_segmentation
+```
+
+**2. Create and activate a virtual environment:**
+```bash
+python -m venv .venv
+```
+- macOS / Linux:
+  ```bash
+  source .venv/bin/activate
+  ```
+- Windows:
+  ```bash
+  .venv\Scripts\activate
+  ```
+
+**3. Install dependencies:**
 ```bash
 pip install -r requirements.txt
 ```
 
-Place `census-bureau.data` and `census-bureau.columns` in the `data/` directory.
+Place `census-bureau-raw.csv` and `census-bureau.columns` in the `data/` directory.
 
 ## Running
 
