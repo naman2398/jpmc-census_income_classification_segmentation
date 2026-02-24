@@ -130,25 +130,34 @@ def profile_clusters(X_pca, df, k):
     plt.savefig(f"{OUT}/segment_profiles_numeric.png", dpi=150)
     plt.close()
 
-    # --- Categorical distribution stacked bars ---
-    for col in PROFILE_CATS:
+    # --- Categorical distribution stacked bars (combined 2×3 figure) ---
+    ncols_cat = 3
+    nrows_cat = (len(PROFILE_CATS) + ncols_cat - 1) // ncols_cat
+    fig, axes_cat = plt.subplots(nrows_cat, ncols_cat,
+                                  figsize=(21, 5 * nrows_cat))
+    axes_cat = axes_cat.flat
 
+    for ax, col in zip(axes_cat, PROFILE_CATS):
         top_vals = df[col].value_counts().head(5).index.tolist()
-        def bucket(x):
-            return x if x in top_vals else "Other"
+        def bucket(x, _top=top_vals):
+            return x if x in _top else "Other"
         col_bucketed = df[col].map(bucket)
         ct = pd.crosstab(df["cluster"], col_bucketed, normalize="index") * 100
         ct = ct.reindex(columns=sorted(ct.columns))
-        ax = ct.plot(kind="bar", stacked=True, figsize=(10, 5), colormap="tab20")
-        ax.set_title(f"Distribution of {col.title()} by Cluster (%)", fontsize=12)
+        ct.plot(kind="bar", stacked=True, colormap="tab20", ax=ax)
+        ax.set_title(f"Distribution of {col.title()} by Cluster (%)", fontsize=11)
         ax.set_xlabel("Cluster")
         ax.set_ylabel("% of cluster")
         ax.tick_params(axis="x", rotation=0)
-        ax.legend(loc="upper right", fontsize=8, title=col.title())
-        plt.tight_layout()
-        safe = col.replace(" ", "_")
-        plt.savefig(f"{OUT}/segment_cat_{safe}.png", dpi=150)
-        plt.close()
+        ax.legend(loc="upper right", fontsize=7, title=col.title())
+
+    for ax in list(axes_cat)[len(PROFILE_CATS):]:
+        ax.set_visible(False)
+
+    plt.suptitle("Categorical Distributions by Cluster", fontsize=13, y=1.01)
+    plt.tight_layout()
+    plt.savefig(f"{OUT}/segment_cat_combined.png", dpi=150, bbox_inches="tight")
+    plt.close()
 
     return df
 

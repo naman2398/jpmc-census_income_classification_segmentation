@@ -19,6 +19,6 @@ data/*.csv
 data/*.data
 
 # Generated outputs (models, plots, numpy arrays)
-#outputs/
+outputs/
 data/
 notebooks/
